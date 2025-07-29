@@ -1,0 +1,216 @@
+{
+  "documents": [
+    {
+      "id": 0,
+      "filename": "20250703_234627_ds_record.pdf",
+      "file_path": "uploads\\notes\\general\\20250703_234627_ds_record.pdf",
+      "upload_date": "2025-07-03 23:46:30.841871",
+      "chunk_count": 8
+    },
+    {
+      "id": 1,
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "file_path": "uploads\\notes\\general\\20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "upload_date": "2025-07-03 23:51:08.465719",
+      "chunk_count": 8
+    },
+    {
+      "id": 2,
+      "filename": "20250704_102634_MongoDBBasicsforStudents_Badge20250618-26-x7bpuv.pdf",
+      "file_path": "uploads\\notes\\general\\20250704_102634_MongoDBBasicsforStudents_Badge20250618-26-x7bpuv.pdf",
+      "upload_date": "2025-07-04 10:26:34.244583",
+      "chunk_count": 1
+    },
+    {
+      "id": 3,
+      "filename": "20250704_102713_MongoDBBasicsforStudents_Badge20250618-26-x7bpuv.pdf",
+      "file_path": "uploads\\notes\\general\\20250704_102713_MongoDBBasicsforStudents_Badge20250618-26-x7bpuv.pdf",
+      "upload_date": "2025-07-04 10:27:13.765133",
+      "chunk_count": 1
+    },
+    {
+      "id": 4,
+      "filename": "20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "file_path": "uploads\\notes\\general\\20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "upload_date": "2025-07-04 10:31:50.694311",
+      "chunk_count": 7
+    }
+  ],
+  "chunks": [
+    {
+      "doc_id": 0,
+      "chunk_id": 0,
+      "text": "/*LINEAR SEARCH*/ \n#include <stdio.h> \nint main() \n{ \nint array[100], search, i, n; \nprintf(\"Enter number of elements in array\\n\"); \nscanf(\"%d\", &n); \nprintf(\"Enter %d integer(s)\\n\", n); \nfor (i = 0; i < n; i++) \nscanf(\"%d\", &array[i]); \nprintf(\"Enter a number to search\\n\"); \nscanf(\"%d\", &search); \nfor (i = 0; i < n; i++) \n{ \nif (array[i] == search)    /* If required element is found */ \n{ \nprintf(\"%d is present at location %d.\\n\", search, i+1); \nbreak; \n} \n} \nif (i == n) \nprintf(\"%d isn't present in the array.\\n\", search); \nreturn 0; \n} \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \nOUTPUT: \n \n \n \n \n \nEVALUATION:  \nParticulars Marks Allotted Marks Obtained \nProgram & Execution  15  \nViva 10  \nTotal 25  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n \n/*BINARY SEARCH*/ \n#include <stdio.h> \nint main() \n{ \nint c, first, last, middle, n, search, array[100]; \nprintf(\"Enter number of elements\\n\"); \nscanf(\"%d\", &n); \nprintf(\"Enter %d integers\\n\", n); \nfor (c = 0; c < n; c++)",
+      "filename": "20250703_234627_ds_record.pdf",
+      "chunk_index": 0
+    },
+    {
+      "doc_id": 0,
+      "chunk_id": 1,
+      "text": "lude <stdio.h> \nint main() \n{ \nint c, first, last, middle, n, search, array[100]; \nprintf(\"Enter number of elements\\n\"); \nscanf(\"%d\", &n); \nprintf(\"Enter %d integers\\n\", n); \nfor (c = 0; c < n; c++) \nscanf(\"%d\", &array[c]); \nprintf(\"Enter value to find\\n\"); \nscanf(\"%d\", &search); \nfirst = 0; \nlast = n - 1; \nmiddle = (first+last)/2; \nwhile (first <= last) { \nif (array[middle] < search) \nfirst = middle + 1; \nelse if (array[middle] == search) { \nprintf(\"%d found at location %d.\\n\", search, middle+1); \nbreak; \n} \nelse \nlast = middle - 1; \n \nmiddle = (first + last)/2; \n} \nif (first > last) \nprintf(\"Not found! %d isn't present in the list.\\n\", search); \nreturn 0; \n} \n \n \n \n \n \n \n \n \n \n \n \n \nOUTPUT: \n \n \n \n \n \n \nEVALUATION:  \nParticulars Marks Allotted Marks Obtained \nProgram & Execution  15  \nViva 10  \nTotal 25  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n/*INSERTION SORT*/ \n#include<stdio.h> \n#include<conio.h> \nint main () \n{ \nint arr[20], n, i, j, temp; \nclrscr(); \nprintf(“En",
+      "filename": "20250703_234627_ds_record.pdf",
+      "chunk_index": 1
+    },
+    {
+      "doc_id": 0,
+      "chunk_id": 2,
+      "text": "va 10  \nTotal 25  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n/*INSERTION SORT*/ \n#include<stdio.h> \n#include<conio.h> \nint main () \n{ \nint arr[20], n, i, j, temp; \nclrscr(); \nprintf(“Enter a size of an array:”); \nscanf(“%d”,&n); \nprintf(“Enter the elements of an array:\\n”); \nfor(i=0; i<n; i++) \n{ \nscanf(“%d”,&arr[i]); \n} \nfor(i=1;i<n;i++) \n{ \ntemp= arr[i]; \nj=i-1; \nwhile(j>=0 && arr[j]>) \n{ \narr[j+1]=arr[j]; \nj--; \n} \narr[j+1] = temp; \n} \nprintf(“Elements of an array after sorted\\n”); \nfor(i=0; i<n; i++) \n{ \nprintf(“%d   “,arr[i]); \n} \ngetch(); \nreturn 0; \n} \n \n  \n \n \n \n \n \n \n \n \n \n \n \nOUTPUT: \n \n \n \n \nEVALUATION:  \nParticulars Marks Allotted Marks Obtained \nProgram & Execution  15  \nViva 10  \nTotal 25  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n/*SELECTION SORT*/ \n#include<stdio.h> \n#include<conio.h> \nint main () \n{ \nint a[20], n, i, j, min, temp; \nclrscr(); \nprintf(“Enter a size of an array:”); \nscanf(“%d”,&n); \nprintf(“Enter the elements of an array:\\n”);",
+      "filename": "20250703_234627_ds_record.pdf",
+      "chunk_index": 2
+    },
+    {
+      "doc_id": 0,
+      "chunk_id": 3,
+      "text": "#include<stdio.h> \n#include<conio.h> \nint main () \n{ \nint a[20], n, i, j, min, temp; \nclrscr(); \nprintf(“Enter a size of an array:”); \nscanf(“%d”,&n); \nprintf(“Enter the elements of an array:\\n”); \nfor(i=0; i<n; i++) \n{ \nscanf(“%d”,&a[i]); \n} \nfor(i=0; i<n-1; i++) \n{ \nint min=i; \nfor(j=i+1; j<n; j++) \n{ \nif(a[j]<a[min]) \n{  \n min=j;   \n} \n} \nif (min!=i) \n{ \ntemp=a[i]; \na[i]=a[min]; \na[min]=temp; \n} \n} \nprintf(“Elements of an array after sorted\\n”); \nfor(i=0; i<n; i++) \n{ \nprintf(“%d “,a[i]); \n} \ngetch(); \nreturn 0; \n} \n \n \n \n \n \nOUTPUT: \n \n \n \n \n \nEVALUATION:  \nParticulars Marks Allotted Marks Obtained \nProgram & Execution  15  \nViva 10  \nTotal 25  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n/*BUBBLE SORT*/ \n#include<stdio.h> \n#include<conio.h> \nint main () \n{ \nint a[20], n, i, j, temp; \nclrscr(); \nprintf(“Enter a size of an array:”); \nscanf(“%d”,&n); \nprintf(“Enter the elements of an array:\\n”); \nfor(i=0; i<n; i++) \n{ \nscanf(“%d”,&a[i]); \n} \nfor(i=0; i<n-1; i++) \n{ \nfor(j=0;",
+      "filename": "20250703_234627_ds_record.pdf",
+      "chunk_index": 3
+    },
+    {
+      "doc_id": 0,
+      "chunk_id": 4,
+      "text": ", temp; \nclrscr(); \nprintf(“Enter a size of an array:”); \nscanf(“%d”,&n); \nprintf(“Enter the elements of an array:\\n”); \nfor(i=0; i<n; i++) \n{ \nscanf(“%d”,&a[i]); \n} \nfor(i=0; i<n-1; i++) \n{ \nfor(j=0; j<n-1; j++) \n{ \nif( a[j] > a[j+1] ) \n{ \ntemp=a[j]; \na[j]= a[j+1]; \na[j+1]=temp; \n} \n} \n} \nprintf(“Elements of an array after sorted\\n”); \nfor(i=0; i<n; i++) \n{ \nprintf(“%d   “,a[i]); \n} \ngetch(); \nreturn 0; \n} \n \n \n \n \n \n \n \n \n \n \n \n \nOUTPUT: \n \n \n \n \n \nEVALUATION:  \nParticulars Marks Allotted Marks Obtained \nProgram & Execution  15  \nViva 10  \nTotal 25  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n/*SHELL SORT*/ \n#include<stdio.h> \n#include<conio.h> \nint main () \n{ \nint arr[20], n, i, j, gap, temp; \nclrscr(); \nprintf(“Enter a size of an array:”); \nscanf(“%d”,&n); \nprintf(“Enter the elements of an array:\\n”); \nfor(i=0; i<n; i++) \n{ \nscanf(“%d”,&arr[i]); \n} \nfor(gap=n/2; gap>0; gap=gap/2) \n{ \nfor(j=gap; j<n; j++) \n{ \nfor(i=j-gap; i>=0; i=i-gap) \n{ \nif(arr[i+gap]>arr[i]) \n{ \nbreak; \n}",
+      "filename": "20250703_234627_ds_record.pdf",
+      "chunk_index": 4
+    },
+    {
+      "doc_id": 0,
+      "chunk_id": 5,
+      "text": "ents of an array:\\n”); \nfor(i=0; i<n; i++) \n{ \nscanf(“%d”,&arr[i]); \n} \nfor(gap=n/2; gap>0; gap=gap/2) \n{ \nfor(j=gap; j<n; j++) \n{ \nfor(i=j-gap; i>=0; i=i-gap) \n{ \nif(arr[i+gap]>arr[i]) \n{ \nbreak; \n} \nelse \n{ \ntemp= arr[i]; \narr[i]= arr[i+gap]; \narr[i+gap]=temp; \n} \n} \n} \n} \nprintf(“Elements of an array after sorted\\n”); \nfor(i=0; i<n; i++) \n{ \nprintf(“%d   “,arr[i]); \n} \ngetch(); \nreturn 0; \n} \n \n \n \nOUTPUT: \n \n \n \n \nEVALUATION:  \nParticulars Marks Allotted Marks Obtained \nProgram & Execution  15  \nViva 10  \nTotal 25  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n\n \n \n/*HEAP SORT*/ \n#include <stdio.h> \nvoid swap(int* a, int* b) \n{ \nint temp = *a; \n*a = *b; \n*b = temp; \n} \nvoid heapify(int arr[], int N, int i) \n{ \nint largest = i; \nint left = 2 * i + 1; \nint right = 2 * i + 2; \n// If left child is larger than root \nif (left < N && arr[left] > arr[largest]) \nlargest = left; \nif (right < N && arr[right] > arr[largest]) \nlargest = right; \nif (largest != i) \n{ \nswap(&arr[i], &arr[larg",
+      "filename": "20250703_234627_ds_record.pdf",
+      "chunk_index": 5
+    },
+    {
+      "doc_id": 0,
+      "chunk_id": 6,
+      "text": "left child is larger than root \nif (left < N && arr[left] > arr[largest]) \nlargest = left; \nif (right < N && arr[right] > arr[largest]) \nlargest = right; \nif (largest != i) \n{ \nswap(&arr[i], &arr[largest]); \nheapify(arr, N, largest); \n} \n} \nvoid heapSort(int arr[], int N) \n{ \nfor (int i = N / 2 - 1; i >= 0; i--) \nheapify(arr, N, i); \nfor (int i = N - 1; i >= 0; i--) \n{ \nswap(&arr[0], &arr[i]); \nheapify(arr, i, 0); \n} \n} \nvoid printArray(int arr[], int N) \n{ \nfor (int i = 0; i < N; i++) \nprintf(\"%d \", arr[i]); \nprintf(\"\\n\"); \n} \nint main() \n{ \nint arr[] = { 12, 11, 13, 5, 6, 7 }; \nint N = sizeof(arr) / sizeof(arr[0]); \nheapSort(arr, N); \nprintf(\"Sorted array is\\n\"); \nprintArray(arr, N); \n} \n \n \nOUTPUT:  \n \n \n \n \n \nEVALUATION:  \nParticulars Marks Allotted Marks Obtained \nProgram & Execution  15  \nViva 10  \nTotal 25",
+      "filename": "20250703_234627_ds_record.pdf",
+      "chunk_index": 6
+    },
+    {
+      "doc_id": 0,
+      "chunk_id": 7,
+      "text": "15  \nViva 10  \nTotal 25",
+      "filename": "20250703_234627_ds_record.pdf",
+      "chunk_index": 7
+    },
+    {
+      "doc_id": 1,
+      "chunk_id": 8,
+      "text": "Harness Generative AI to develop innovative \nsolutions that boost business and societal growthAccenture Innovation Challenge\n\nTeam details\nMohammed Faisar A \n(Team Leader)\nPhotoDommeti Praveen Satya \nPrakash Rajasekaran ATEAM NAME : Rebooterz\nCollege : Sri Manakula Vinayagar \nEngineering College \nStream: B.Tech -Information Technology\nYear of graduation : 2027\nRam Kumar R\nCollege : Sri Manakula Vinayagar \nEngineering College \nStream: B.Tech -Information Technology\nYear of graduation : 2027College : Sri Manakula Vinayagar \nEngineering College \nStream: B.Tech -Information Technology\nYear of graduation : 2027College : Sri Manakula Vinayagar \nEngineering College \nStream: B.Tech -Information Technology\nYear of graduation : 2027\nAI powered tourism guide and trip planner (with sustainable travel):\nTravel Planning Complexity : Travelers face challenges in planning a comprehensive trip, including finding",
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "chunk_index": 0
+    },
+    {
+      "doc_id": 1,
+      "chunk_id": 9,
+      "text": "r of graduation : 2027\nAI powered tourism guide and trip planner (with sustainable travel):\nTravel Planning Complexity : Travelers face challenges in planning a comprehensive trip, including finding \ndestinations, accommodations, transportation, activities, and creating personalized itineraries .Problem Statement:\nLack of Sustainable Travel Options : Travel platforms often overlook sustainable options like eco -friendly \naccommodationsFragmented Information : Information is scattered across multiple platforms, making it difficult to streamline the \nexperience .\noThe AI -powered tourism guide integrates all \nstages of a trip, from planning to booking to \nnavigating the destination\noUsers input preferences like budget, interests \n(e.g., adventure, relaxation), preferred \ndestinations, and the AI generates a personalized \ntrip itinerary.\noIt also offers real -time travel updates, local \nevents recommendations and sustainable eco -\nfriendly transportation options.Description: Impacts :\nCo",
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "chunk_index": 1
+    },
+    {
+      "doc_id": 1,
+      "chunk_id": 10,
+      "text": "e AI generates a personalized \ntrip itinerary.\noIt also offers real -time travel updates, local \nevents recommendations and sustainable eco -\nfriendly transportation options.Description: Impacts :\nConvenience & Accessibility : People gain \naccess to all aspects of travel planning on a \nsingle platform, making it easier for anyone, \nincluding non -experts, to plan eco -friendly trips \neffortlessly . \nReduced Anxiety : Automated itinerary \ncreation, updates, and real -time \nrecommendations reduce the stress of \nplanning and adjusting trips on the go with \nsustainable travel.\nProposed solution:\n֍Our Solution is to solve the issues in Trip or travel \nmanagement by gathering the fragmented\n(scattered) information over the internet by use of AI\n֍We introduce our app called : \nEnd-to-End Trip Planning : From selecting a \ndestination to booking flights, accommodations, and \ncreating a tailored itinerary, the AI manages the \nentire process .\nPersonalized Experience : The AI analyzes user \np",
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "chunk_index": 2
+    },
+    {
+      "doc_id": 1,
+      "chunk_id": 11,
+      "text": "Planning : From selecting a \ndestination to booking flights, accommodations, and \ncreating a tailored itinerary, the AI manages the \nentire process .\nPersonalized Experience : The AI analyzes user \npreferences, travel history, and current trends to \nrecommend destinations, activities, and experiences \ntailored to individual tastes.\nSmart Assistance : In-trip features like real -time \nupdates on weather, traffic, local events, and \nintegration with translation and navigation services.Technology Used:\nFlutter, machine Learning, Natural Language \nProcessing (NLP), Real -Time Data APIs , G-maps, Matrix \nFactorization, Google Cloud AI / Tensor Flow, AESFlow chart:\nThe change with the power of Technology:\noAI & Machine Learning : AI analyzes data from past trips, user reviews, and trends to predict and \nsuggest optimal travel routes, times, and experiences.\noNatural Language Processing : The system can respond to user queries about destinations, \naccommodations, or activities in real -time",
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "chunk_index": 3
+    },
+    {
+      "doc_id": 1,
+      "chunk_id": 12,
+      "text": "edict and \nsuggest optimal travel routes, times, and experiences.\noNatural Language Processing : The system can respond to user queries about destinations, \naccommodations, or activities in real -time, offering solutions or recommendations\noAugmented Reality (AR) : Enhance the travel experience by offering AR -guided tours, virtual previews \nof destinations, or interactive maps to help users navigate .\noBlock chain for Transparent Sustainability : Uses block chain technology to verify and highlight eco -\nfriendly accommodations, carbon offsets, and sustainable travel options to ensure transparency and \ntrust.\noSmart Algorithms for Green Navigation : Offers eco -friendly routes for travel, reducing emissions by \nrecommending public transport, biking, or walking where feasible, and incorporating real -time updates \non greener alternatives.\noFigma: To make a creative and blissful UI and UX design which satisfies the user feel \ncomfortable and engaging in using our app \nThe uniqueness from",
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "chunk_index": 4
+    },
+    {
+      "doc_id": 1,
+      "chunk_id": 13,
+      "text": "ting real -time updates \non greener alternatives.\noFigma: To make a creative and blissful UI and UX design which satisfies the user feel \ncomfortable and engaging in using our app \nThe uniqueness from other solutions in market:\n•PATENT  FILED : No\nYes, We have a working model: Uniqueness of the solution\nFully Integrated : Unlike other platforms focusing only on \ncertain aspects (like accommodations or activities), this \nsolution covers everything from planning to execution .\nand local Economic Development\nEnhanced Personalization : Offers hyper -personalized \ntravel plans by using AI to deeply analyze users’ \npreferences and create truly custom experiences\nReal -Time Adaptability : The AI dynamically updates \nitineraries based on changing conditions (e.g., weather, \ntraffic, events), user preferences and sustainability in \ninvolving the traveling part.\nReceived testimonials:\nWe received many testimonials as user feedbacks with more positive and some negative opinions, and \nsome of t",
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "chunk_index": 5
+    },
+    {
+      "doc_id": 1,
+      "chunk_id": 14,
+      "text": "er preferences and sustainability in \ninvolving the traveling part.\nReceived testimonials:\nWe received many testimonials as user feedbacks with more positive and some negative opinions, and \nsome of them we recorded the are: \nThe testimonial(user feedback) is collected by our teammate Praveen from our Team \nRebooterz :\nDuring this testimonial session many users said positive feedback about our app, as it \ngreatly reduces the effort and stress of the trip planning, scheduling, time \nmanagement and navigation, and some opinions that app networking and \nmarketing is not done efficiently because as we don’t have any investors so far for \nthis app( TripAI ). This issue will be rectified in development of this app in the future.  Testimonials received on:\n25-09-2024\nA1-minute video of your idea:\nA detailed Video about our project By our team Rebooterz:\nYouTube Video link:\nhttps:// youtu.be/NKo8HeSgF4YREBOOTERZ:\nREBOOTERZ:\nA DETAILED VIDEO ABOUT OUR TOPIC:\nAI powered tourism guide and trip pl",
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "chunk_index": 6
+    },
+    {
+      "doc_id": 1,
+      "chunk_id": 15,
+      "text": "A detailed Video about our project By our team Rebooterz:\nYouTube Video link:\nhttps:// youtu.be/NKo8HeSgF4YREBOOTERZ:\nREBOOTERZ:\nA DETAILED VIDEO ABOUT OUR TOPIC:\nAI powered tourism guide and trip planner \n(with sustainable travel):ACCENTURE\nPRESENTED BY:\nPraveen(team member of Rebooterz)\nThank you!",
+      "filename": "20250703_235107_AI_powered_tourism_guide_and_trip_planner_with_sustainable_travel-Reboterz.pdf",
+      "chunk_index": 7
+    },
+    {
+      "doc_id": 2,
+      "chunk_id": 16,
+      "text": "Issued on: 18 JUN 2025 | Issued by: MongoDB\nVerify: https://www.credly.com/go/WZT9r2FwMongoDB Basics for Students\nISSUED TO\nA Hariharan",
+      "filename": "20250704_102634_MongoDBBasicsforStudents_Badge20250618-26-x7bpuv.pdf",
+      "chunk_index": 0
+    },
+    {
+      "doc_id": 3,
+      "chunk_id": 17,
+      "text": "Issued on: 18 JUN 2025 | Issued by: MongoDB\nVerify: https://www.credly.com/go/WZT9r2FwMongoDB Basics for Students\nISSUED TO\nA Hariharan",
+      "filename": "20250704_102713_MongoDBBasicsforStudents_Badge20250618-26-x7bpuv.pdf",
+      "chunk_index": 0
+    },
+    {
+      "doc_id": 4,
+      "chunk_id": 18,
+      "text": "Mindrix\n\nPAGE 0 1\nS.no Name Role  Department Sec\n1 Mohammed  Faisar  A Firebase & Backend B.Tech -IT III year - B\n2Ram Kumar RAI integration & \nBackend                            B.Tech -IT       III year - B\n3 Hariharan  A UI/UX B.Tech -IT III year - B Topic:  AI powered campus automation\nTeam:  Matrix\n\nPAGE 02\n•Manual class/lab scheduling leads to time conflicts, room overbooking, and delays.\n•Exam seating lacks fairness, students from the same section often sit together.\n•Doubt clarification lacks personalization —students rely on generic bots or delayed faculty replies\n•Complaint and feedback systems discourage students due to fear of identity exposure.\n•Notifications about changes are either delayed or missing entirely.Challenges:\n•Automate classroom/lab bookings using availability & faculty input.\n•Ensure dynamic and fair exam seating with gender and section logic.\n•Trigger automated notifications via n8n to stakeholders",
+      "filename": "20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "chunk_index": 0
+    },
+    {
+      "doc_id": 4,
+      "chunk_id": 19,
+      "text": "ges:\n•Automate classroom/lab bookings using availability & faculty input.\n•Ensure dynamic and fair exam seating with gender and section logic.\n•Trigger automated notifications via n8n to stakeholders\n•Build a syllabus -trained doubt -solving chatbot  using LLaMA ..\n•Enable anonymous student complaints via blockchain  to ensure privacy and trust.Objective:\n\nExisting Solutions -LimitationsPAGE 03\nCurrent Institutional Tools - Limitations :\n•Use traditional spreadsheets or portals without dynamic scheduling.\n•Exam seat allotment is done manually or with basic tools — often unfair or repetitive.\n•Bots like ChatGPT  aren't trained on specific class content or notes.\n•Complaint boxes or portals are traceable, discouraging sensitive feedback.\n•Manual communication leads to late awareness about scheduling changes\n\nProposed Solution:PAGE 04 01\n•Use Automated Class/Lab Allocation:  Based on real -time room availability, request time, \nand course schedule\n•Exam Seating Logic:  Uses advanced logic",
+      "filename": "20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "chunk_index": 1
+    },
+    {
+      "doc_id": 4,
+      "chunk_id": 20,
+      "text": "heduling changes\n\nProposed Solution:PAGE 04 01\n•Use Automated Class/Lab Allocation:  Based on real -time room availability, request time, \nand course schedule\n•Exam Seating Logic:  Uses advanced logic to ensure no two students from the same \nsection/gender sit together.\n•AI Notes Bot:  Built using LLaMA  and hosted via Groq ; trained on uploaded notes, syllabus, \nand materials.\n•Anonymous Complaint System:  Uses blockchain  smart contracts to submit encrypted, \nidentity -free complaints\n•n8n Email Automation:  Sends email notifications automatically to faculty, HOD, or \nstudents when schedules are updated.\n\nPAGE 05\nFeature Existing System Mindrix\nClass/Lab Scheduling Manual / Static Automated with conflict handling via Firestore\nExam Seating Arrangement Repetitive, Section Overlap Intelligent layout, section separation logic\nDoubt ClarificationGoogle/ ChatGPT  (general \npurpose)Notes -trained AI bot via LLaMA\nComplaint Mechanism Identifiable, fear of backlash Blockchain -based, anonymo",
+      "filename": "20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "chunk_index": 2
+    },
+    {
+      "doc_id": 4,
+      "chunk_id": 21,
+      "text": "ent layout, section separation logic\nDoubt ClarificationGoogle/ ChatGPT  (general \npurpose)Notes -trained AI bot via LLaMA\nComplaint Mechanism Identifiable, fear of backlash Blockchain -based, anonymous and secure\nNotifications Manual, Delayed Real -time via n8n workflows\nData Auditability None Blockchain  smart contracts provide verifiability\n\n•Real -Time Email Notifications – Sends instant updates to users through n8n email automation.\n•AI-Powered Doubt Solving Chatbot  – Answers student queries using LLaMA  trained on notes and \nsyllabus.\n•Automated Classroom and Lab Allocation – Assigns rooms based on real -time availability and \nfaculty requests.\n•Role -Based Access Control – Provides different access for students, faculty, HODs, and admin \nroles.\n•Blockchain -Based Anonymous Complaints – Enables secure, private complaint submission via \nblockchain\n•Scalable Modular Design – Easily extendable for future features like attendance or reports.Main & Salient Features:\nPAGE 06\n\nPAGE 07",
+      "filename": "20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "chunk_index": 3
+    },
+    {
+      "doc_id": 4,
+      "chunk_id": 22,
+      "text": "ts – Enables secure, private complaint submission via \nblockchain\n•Scalable Modular Design – Easily extendable for future features like attendance or reports.Main & Salient Features:\nPAGE 06\n\nPAGE 07\nTechnical Stack:\nHTML\nPython CSS\nFirebase Llama 3.3 -70bFlask\nn8n Multichain\nArchitecture  for anonymous messaging  to Faculties\nPAGE 08\nBenefits:PAGE 09\n•Saves administrative effort by reducing manual work.\n•Builds student trust with transparent & secure communication.\n•Improves academic integrity with smart seating logic\n•Real -time notifications reduce miscommunication.\nUse Cases:\n•University campuses for exam and class scheduling..\n•Coaching centers managing multiple batches\n•Schools needing anonymous grievance redressal systems.\n•Online/Hybrid learning models that want smarter student engagement\n\nProject  progress:PAGE 10\n•Front –end development      →\n\nScreenshots of our project\nPAGE  11\n\nScreenshots of our projectPAGE 12\n\nScreenshots of our projectPAGE 13\n\nPAGE  14\nConclusion:\nMindr",
+      "filename": "20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "chunk_index": 4
+    },
+    {
+      "doc_id": 4,
+      "chunk_id": 23,
+      "text": "agement\n\nProject  progress:PAGE 10\n•Front –end development      →\n\nScreenshots of our project\nPAGE  11\n\nScreenshots of our projectPAGE 12\n\nScreenshots of our projectPAGE 13\n\nPAGE  14\nConclusion:\nMindritx  introduces a revolutionary shift  in how academic institutions manage \noperations. It goes beyond digital forms — AI-driven learning support , automated \ninfrastructure use , and blockchain -backed student voice protection\nWe are not just automating tasks.\nWe are empowering institutions to be smarter , and students to feel safer\n\nPAGE 15\nReferences:\n•Firebase:  https://firebase.google.com/docs\n•Flask:  https://flask.palletsprojects.com\n•Meta AI LLaMA  Research:  https://ai.meta.com/llama\n•Groq  : www.groq.com .\n•n8n Docs:  https://docs.n8n.io\n•Firestore  Database Docs: https://firebase.google.com/docs/firestore\n\nPAGE 16\nThank you",
+      "filename": "20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "chunk_index": 5
+    },
+    {
+      "doc_id": 4,
+      "chunk_id": 24,
+      "text": "ogle.com/docs/firestore\n\nPAGE 16\nThank you",
+      "filename": "20250704_103150_DOC-20250627-WA0011._1.pdf",
+      "chunk_index": 6
+    }
+  ]
+}

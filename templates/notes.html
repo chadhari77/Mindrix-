@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+
+{% block title %}AI Notes Bot - College Management System{% endblock %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/notes.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="notes-container">
+    <div class="notes-header">
+        <h1>
+            <i class="fas fa-robot"></i>
+            AI Notes Bot
+        </h1>
+        <p>Ask questions about your course materials and get instant answers</p>
+        <a href="{{ url_for('dashboard') }}" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Dashboard
+        </a>
+    </div>
+
+    <div class="notes-content">
+        {% if session.user_type == 'faculty' %}
+        <div class="upload-section">
+            <h2>Upload Course Materials</h2>
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <p>Drag and drop files here or click to browse</p>
+                <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.txt">
+                <button type="button" class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-folder-open"></i>
+                    Browse Files
+                </button>
+            </div>
+            <div class="upload-progress" id="uploadProgress" style="display: none;">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="progressText">Uploading...</p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="chat-section">
+            <h2>Ask the AI Bot</h2>
+            <div class="chat-container">
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>Hello! I'm your AI Notes Bot. I can help you with questions about your course materials. What would you like to know?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chat-input-container">
+                    <div class="chat-input">
+                        <textarea id="questionInput" placeholder="Ask a question about your course materials..." rows="1"></textarea>
+                        <button id="sendButton" onclick="sendQuestion()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="available-notes">
+            <h2>Available Course Materials</h2>
+            <div class="notes-list" id="notesList">
+                <div class="loading-notes">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading available notes...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notes-sidebar">
+        <div class="quick-questions">
+            <h3>Quick Questions</h3>
+            <div class="question-suggestions">
+                <button class="suggestion-btn" onclick="askQuickQuestion('What are the main topics covered in this course?')">
+                    <i class="fas fa-list"></i>
+                    Course Topics
+                </button>
+                <button class="suggestion-btn" onclick="askQuickQuestion('Can you summarize the key concepts?')">
+                    <i class="fas fa-lightbulb"></i>
+                    Key Concepts
+                </button>
+                <button class="suggestion-btn" onclick="askQuickQuestion('What are the important formulas?')">
+                    <i class="fas fa-calculator"></i>
+                    Important Formulas
+                </button>
+                <button class="suggestion-btn" onclick="askQuickQuestion('Give me practice questions.')">
+                    <i class="fas fa-question-circle"></i>
+                    Practice Questions
+                </button>
+            </div>
+        </div>
+
+        <div class="chat-history">
+            <h3>Recent Questions</h3>
+            <div class="history-list" id="historyList">
+                <p class="no-history">No recent questions</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_js %}
+<script src="{{ url_for('static', filename='js/notes.js') }}"></script>
+<script>
+let chatHistory = [];
+
+function sendQuestion() {
+    const input = document.getElementById('questionInput');
+    const question = input.value.trim();
+    
+    if (!question) return;
+    
+    // Add user message to chat
+    addMessageToChat('user', question);
+    
+    // Clear input
+    input.value = '';
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Send question to backend
+    fetch('/api/notes/query', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: question })
+    })
+    .then(response => response.json())
+    .then(data => {
+        hideTypingIndicator();
+        if (data.error) {
+            addMessageToChat('bot', 'Sorry, I encountered an error: ' + data.error);
+        } else {
+            addMessageToChat('bot', data.response);
+        }
+        
+        // Add to history
+        addToHistory(question);
+    })
+    .catch(error => {
+        hideTypingIndicator();
+        addMessageToChat('bot', 'Sorry, I encountered an error processing your question.');
+        console.error('Error:', error);
+    });
+}
+
+function addMessageToChat(sender, message) {
+    const chatMessages = document.getElementById('chatMessages');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message ${sender}-message`;
+    
+    const timestamp = new Date().toLocaleTimeString();
+    
+    messageDiv.innerHTML = `
+        <div class="message-avatar">
+            <i class="fas fa-${sender === 'user' ? 'user' : 'robot'}"></i>
+        </div>
+        <div class="message-content">
+            <p>${message}</p>
+            <span class="message-time">${timestamp}</span>
+        </div>
+    `;
+    
+    chatMessages.appendChild(messageDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function showTypingIndicator() {
+    const chatMessages = document.getElementById('chatMessages');
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'message bot-message typing-indicator';
+    typingDiv.id = 'typingIndicator';
+    
+    typingDiv.innerHTML = `
+        <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="message-content">
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    `;
+    
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function hideTypingIndicator() {
+    const typingIndicator = document.getElementById('typingIndicator');
+    if (typingIndicator) {
+        typingIndicator.remove();
+    }
+}
+
+function askQuickQuestion(question) {
+    document.getElementById('questionInput').value = question;
+    sendQuestion();
+}
+
+function addToHistory(question) {
+    chatHistory.unshift({
+        question: question.substring(0, 50) + (question.length > 50 ? '...' : ''),
+        fullQuestion: question,
+        timestamp: new Date().toLocaleTimeString()
+    });
+    
+    // Keep only last 10 questions
+    chatHistory = chatHistory.slice(0, 10);
+    updateHistoryDisplay();
+}
+
+function updateHistoryDisplay() {
+    const historyList = document.getElementById('historyList');
+    
+    if (chatHistory.length === 0) {
+        historyList.innerHTML = '<p class="no-history">No recent questions</p>';
+        return;
+    }
+    
+    historyList.innerHTML = chatHistory.map(item => `
+        <div class="history-item" onclick="askQuickQuestion('${item.fullQuestion}')">
+            <p>${item.question}</p>
+            <span class="history-time">${item.timestamp}</span>
+        </div>
+    `).join('');
+}
+
+function loadAvailableNotes() {
+    fetch('/api/notes/list')
+        .then(response => response.json())
+        .then(data => {
+            const notesList = document.getElementById('notesList');
+            
+            if (data.error) {
+                notesList.innerHTML = '<p class="error">Error loading notes: ' + data.error + '</p>';
+                return;
+            }
+            
+            if (data.notes.length === 0) {
+                notesList.innerHTML = '<p class="no-notes">No course materials uploaded yet.</p>';
+                return;
+            }
+            
+            notesList.innerHTML = data.notes.map(note => `
+                <div class="note-item">
+                    <div class="note-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="note-info">
+                        <h4>${note.name}</h4>
+                        <p>Uploaded: ${note.uploaded_date}</p>
+                    </div>
+                </div>
+            `).join('');
+        })
+        .catch(error => {
+            console.error('Error loading notes:', error);
+            document.getElementById('notesList').innerHTML = '<p class="error">Error loading notes</p>';
+        });
+}
+
+// Handle file upload for faculty
+{% if session.user_type == 'faculty' %}
+function handleFileUpload() {
+    const fileInput = document.getElementById('fileInput');
+    const uploadArea = document.getElementById('uploadArea');
+    const uploadProgress = document.getElementById('uploadProgress');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+    
+    if (!fileInput) {
+        console.error('File input element not found');
+        return;
+    }
+    
+    fileInput.addEventListener('change', function(e) {
+        const files = e.target.files;
+        if (files.length === 0) return;
+        
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+            formData.append('file', files[i]);
+        }
+        
+        if (uploadArea) uploadArea.style.display = 'none';
+        if (uploadProgress) uploadProgress.style.display = 'block';
+        
+        fetch('/api/notes/upload', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                alert('Upload failed: ' + data.error);
+            } else {
+                alert('Files uploaded successfully!');
+                loadAvailableNotes();
+            }
+        })
+        .catch(error => {
+            console.error('Upload error:', error);
+            alert('Upload failed');
+        })
+        .finally(() => {
+            if (uploadArea) uploadArea.style.display = 'block';
+            if (uploadProgress) uploadProgress.style.display = 'none';
+            fileInput.value = '';
+        });
+    });
+}
+{% endif %}
+
+// Enter key handler for textarea
+document.getElementById('questionInput').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendQuestion();
+    }
+});
+
+// Initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    loadAvailableNotes();
+    {% if session.user_type == 'faculty' %}
+    handleFileUpload();
+    {% endif %}
+});
+</script>
+{% endblock %}

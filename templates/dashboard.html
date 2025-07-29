@@ -1,0 +1,210 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - College Management System{% endblock %}
+
+{% block additional_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h1>Welcome, {{ user_data.email }}</h1>
+        <p class="user-role">{{ user_data.user_type|title }} Dashboard</p>
+    </div>
+
+    <div class="dashboard-stats">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Today's Classes</h3>
+                <p class="stat-number">5</p>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Notifications</h3>
+                <p class="stat-number">3</p>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h3>Active Users</h3>
+                <p class="stat-number">156</p>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="stat-info">
+                <h3>System Health</h3>
+                <p class="stat-number">98%</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-features">
+        <h2>Available Features</h2>
+        <div class="features-grid">
+            {% for feature in user_data.features %}
+            <div class="feature-card" onclick="navigateToFeature('{{ feature.url }}')">
+                <div class="feature-icon">
+                    <i class="fas fa-{{ feature.icon }}"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>{{ feature.name }}</h3>
+                    <p>{{ feature.description or 'Access ' + feature.name.lower() + ' functionality' }}</p>
+                </div>
+                <div class="feature-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="dashboard-recent">
+        <div class="recent-activity">
+            <h3>Recent Activity</h3>
+            <div class="activity-list">
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-upload"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text">New notes uploaded for Data Structures</p>
+                        <p class="activity-time">2 hours ago</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text">Schedule updated for Room 101</p>
+                        <p class="activity-time">4 hours ago</p>
+                    </div>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <div class="activity-content">
+                        <p class="activity-text">New student registered</p>
+                        <p class="activity-time">1 day ago</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="action-buttons">
+                {% if user_data.user_type == 'student' %}
+                <button class="action-btn" onclick="navigateToFeature('/notes')">
+                    <i class="fas fa-robot"></i>
+                    Ask AI Bot
+                </button>
+                <button class="action-btn" onclick="navigateToFeature('/schedule')">
+                    <i class="fas fa-calendar"></i>
+                    View Schedule
+                </button>
+                {% elif user_data.user_type == 'faculty' %}
+                <button class="action-btn" onclick="navigateToFeature('/notes')">
+                    <i class="fas fa-upload"></i>
+                    Upload Notes
+                </button>
+                <button class="action-btn" onclick="navigateToFeature('/room-allocation')">
+                    <i class="fas fa-map"></i>
+                    Allocate Room
+                </button>
+                {% elif user_data.user_type == 'admin' %}
+                <button class="action-btn" onclick="navigateToFeature('/user-management')">
+                    <i class="fas fa-users-cog"></i>
+                    Manage Users
+                </button>
+                <button class="action-btn" onclick="navigateToFeature('/reports')">
+                    <i class="fas fa-chart-bar"></i>
+                    View Reports
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-announcements">
+        <h3>System Announcements</h3>
+        <div class="announcements-list">
+            <div class="announcement-item">
+                <div class="announcement-header">
+                    <i class="fas fa-info-circle"></i>
+                    <h4>System Maintenance</h4>
+                    <span class="announcement-date">July 5, 2025</span>
+                </div>
+                <p>Scheduled maintenance will occur on July 5th from 2:00 AM to 4:00 AM.</p>
+            </div>
+            
+            <div class="announcement-item">
+                <div class="announcement-header">
+                    <i class="fas fa-star"></i>
+                    <h4>New Feature Release</h4>
+                    <span class="announcement-date">July 3, 2025</span>
+                </div>
+                <p>AI Notes Bot has been upgraded with improved response accuracy.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_js %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+<script>
+function navigateToFeature(url) {
+    if (url.startsWith('/')) {
+        window.location.href = url;
+    } else {
+        console.log('Navigating to:', url);
+        // Handle external URLs or show coming soon message
+        showNotification('This feature is coming soon!', 'info');
+    }
+}
+
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <i class="fas fa-info-circle"></i>
+        <span>${message}</span>
+        <button onclick="this.parentElement.remove()">
+            <i class="fas fa-times"></i>
+        </button>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+// Initialize dashboard
+document.addEventListener('DOMContentLoaded', function() {
+    initializeDashboard();
+});
+</script>
+{% endblock %}
